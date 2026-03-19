@@ -25,7 +25,7 @@ export default function Services() {
           {/* 🔷 INFRAESTRUCTURA MECÁNICA */}
           <div style={card}>
             <img
-              src="/images/servicio-mecanico.jpg"
+              src="/images/servicio-mecanico.png"
               alt="Infraestructura mecánica"
               style={{
                 width: "100%",
