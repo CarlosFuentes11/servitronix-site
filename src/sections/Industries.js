@@ -28,6 +28,7 @@ export default function Industries() {
 const title = {
   fontSize: "clamp(26px, 5vw, 36px)",
   marginBottom: "15px",
+  color: "#111",
 };
 
 const line = {
@@ -49,4 +50,6 @@ const item = {
   textAlign: "center",
   borderRadius: "6px",
   fontWeight: "600",
+  color: "#111",
+  border: "1px solid #ddd",
 };

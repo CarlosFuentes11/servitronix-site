@@ -13,6 +13,7 @@ export default function Projects() {
         <div style={line} />
 
         <div style={grid}>
+
           <div style={card}>
             <h3 style={cardTitle}>Proyecto en planta de manufactura</h3>
             <p style={cardText}>
@@ -23,16 +24,17 @@ export default function Projects() {
           <div style={card}>
             <h3 style={cardTitle}>Optimización de iluminación industrial</h3>
             <p style={cardText}>
-              Optimización de iluminación en nave industrial.
+              Implementación de soluciones de iluminación en nave industrial para eficiencia energética.
             </p>
           </div>
 
           <div style={card}>
             <h3 style={cardTitle}>Mantenimiento electromecánico en planta</h3>
             <p style={cardText}>
-              Servicios electromecánicos para continuidad operativa.
+              Servicios especializados para garantizar continuidad operativa en sistemas industriales.
             </p>
           </div>
+
         </div>
 
       </div>
@@ -43,6 +45,7 @@ export default function Projects() {
 const title = {
   fontSize: "clamp(26px, 5vw, 36px)",
   marginBottom: "15px",
+  color: "#111",
 };
 
 const line = {
@@ -67,9 +70,11 @@ const card = {
 
 const cardTitle = {
   marginBottom: "10px",
+  color: "#111",
 };
 
 const cardText = {
   fontSize: "14px",
-  color: "#444",
+  color: "#333",
+  lineHeight: "1.5",
 };

@@ -16,7 +16,14 @@ export default function Services() {
 
           {/* 🔷 INFRAESTRUCTURA ELÉCTRICA */}
           <div style={card}>
+            <img
+              src="/images/servicio-electrico.jpg"
+              alt="Infraestructura eléctrica"
+              style={img}
+            />
+
             <h3 style={cardTitle}>Infraestructura eléctrica</h3>
+
             <p style={cardText}>
               Instalaciones eléctricas industriales, canalización, tableros y sistemas eléctricos para plantas de manufactura.
             </p>
@@ -27,15 +34,10 @@ export default function Services() {
             <img
               src="/images/servicio-mecanico.png"
               alt="Infraestructura mecánica"
-              style={{
-                width: "100%",
-                marginBottom: "15px",
-                borderRadius: "6px",
-                objectFit: "cover",
-              }}
+              style={img}
             />
 
-            <h3 style={cardTitle}>TEST SERIVIO MECANICO</h3>
+            <h3 style={cardTitle}>Infraestructura mecánica</h3>
 
             <p style={cardText}>
               Estructuras metálicas, pailería, soldadura y tuberías industriales para instalaciones productivas.
@@ -44,7 +46,14 @@ export default function Services() {
 
           {/* 🔷 TRANSPORTADORES */}
           <div style={card}>
+            <img
+              src="/images/servicio-transporte.jpg"
+              alt="Sistemas de transporte industrial"
+              style={img}
+            />
+
             <h3 style={cardTitle}>Sistemas de transporte industrial</h3>
+
             <p style={cardText}>
               Integración e instalación de transportadores para líneas de producción.
             </p>
@@ -60,6 +69,7 @@ export default function Services() {
 const title = {
   fontSize: "clamp(26px, 5vw, 36px)",
   marginBottom: "15px",
+  color: "#111",
 };
 
 const line = {
@@ -82,13 +92,22 @@ const card = {
   border: "1px solid #ddd",
 };
 
+const img = {
+  width: "100%",
+  height: "180px",
+  objectFit: "cover",
+  borderRadius: "6px",
+  marginBottom: "15px",
+};
+
 const cardTitle = {
   marginBottom: "10px",
   fontSize: "18px",
+  color: "#111",
 };
 
 const cardText = {
   fontSize: "14px",
-  color: "#444",
+  color: "#333",
   lineHeight: "1.5",
 };
