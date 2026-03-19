@@ -27,3 +27,30 @@ p {
     display: block !important;
   }
 }
+
+/* ===== NAVBAR RESPONSIVE ===== */
+
+/* MOBILE */
+@media (max-width: 768px) {
+  
+  /* Oculta menú horizontal */
+  nav {
+    display: none !important;
+  }
+
+  /* Muestra botón hamburguesa */
+  div[style*="fontSize: 26px"] {
+    display: block !important;
+  }
+
+}
+
+/* DESKTOP */
+@media (min-width: 769px) {
+
+  /* Oculta hamburguesa */
+  div[style*="fontSize: 26px"] {
+    display: none !important;
+  }
+
+}
