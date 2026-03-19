@@ -47,14 +47,19 @@ export default function Contact() {
         </div>
 
         {/* REGISTROS */}
-        <div style={legal}>
-          <p>Registro REPSE: STPS/UTD/DGIFT/AR203350/2025</p>
-          <p>DUNS: 95-176-8610</p>
-          <p>
-            Cumplimos con regulaciones y estándares para la prestación de
-            servicios especializados en el sector industrial.
-          </p>
-        </div>
+<div style={legal}>
+  <p style={{ color: "#ffffff" }}>
+    Registro REPSE: STPS/UTD/DGIFT/AR203350/2025
+  </p>
+
+  <p style={{ color: "#ffffff" }}>
+    DUNS: 95-176-8610
+  </p>
+
+  <p style={{ color: "#ffffff" }}>
+    Cumplimos con regulaciones y estándares para la prestación de servicios especializados en el sector industrial.
+  </p>
+</div>
 
       </div>
     </section>
@@ -138,6 +143,5 @@ const legal = {
   borderTop: "1px solid rgba(255,255,255,0.2)",
   fontSize: "13px",
   lineHeight: "1.6",
-  color: "#ffffff", // 🔥 CLAVE
-  opacity: "0.9",
+  color: "#ffffff",
 };
