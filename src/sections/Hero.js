@@ -7,7 +7,8 @@ export default function Hero() {
       id="inicio"
       style={{
         position: "relative",
-        height: "90vh",
+        minHeight: "70vh",
+        padding: "60px 20px",
         width: "100%",
       }}
     >
@@ -85,7 +86,7 @@ export default function Hero() {
               marginTop: "30px",
               display: "flex",
               flexDirection: "column",
-              gap: "15px",
+              gap: "10px",
               alignItems: "center",
             }}
           >
