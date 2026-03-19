@@ -3,7 +3,7 @@ export default function About() {
     <section
       id="sobre"
       style={{
-        padding: "100px 40px",
+        padding: "80px 20px",
         background: "#f5f5f5",
       }}
     >
@@ -13,18 +13,18 @@ export default function About() {
           margin: "0 auto",
         }}
       >
-        {/* TÍTULO */}
+        {/* TITULO */}
         <h2
           style={{
-            fontSize: "36px",
-            marginBottom: "20px",
+            fontSize: "clamp(26px, 5vw, 36px)",
+            marginBottom: "15px",
             color: "#111",
           }}
         >
           Sobre Servitronix
         </h2>
 
-        {/* LÍNEA DECORATIVA */}
+        {/* LINEA */}
         <div
           style={{
             width: "60px",
@@ -37,34 +37,78 @@ export default function About() {
         {/* TEXTO */}
         <p
           style={{
-            fontSize: "18px",
-            lineHeight: "1.8",
+            fontSize: "clamp(14px, 2.5vw, 18px)",
+            lineHeight: "1.7",
             color: "#333",
-            maxWidth: "900px",
           }}
         >
-          Servitronix es una empresa especializada en soluciones para infraestructura
-          electromecánica, enfocada en brindar soluciones confiables
-          para plantas industriales. Nuestro enfoque se centra en la
-          instalación, mantenimiento y optimización de sistemas eléctricos e
-          industriales, garantizando eficiencia operativa y continuidad en los
-          procesos productivos.
+          Servitronix es una empresa especializada en infraestructura
+          electromecánica industrial, enfocada en brindar soluciones
+          eficientes para plantas de manufactura, industria y PYMES.
         </p>
 
         <p
           style={{
-            fontSize: "18px",
-            lineHeight: "1.8",
+            fontSize: "clamp(14px, 2.5vw, 18px)",
+            marginTop: "15px",
+            lineHeight: "1.7",
             color: "#333",
-            marginTop: "20px",
-            maxWidth: "900px",
           }}
         >
-          Contamos con experiencia en diversos sectores industriales, trabajando
-          bajo estándares de calidad y seguridad que nos permiten ofrecer
-          resultados sólidos y medibles para cada cliente.
+          Contamos con experiencia en instalación, mantenimiento y
+          desarrollo de sistemas eléctricos e industriales, garantizando
+          operación continua, seguridad y eficiencia en cada proyecto.
         </p>
+
+        {/* BLOQUES */}
+        <div
+          style={{
+            marginTop: "40px",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "20px",
+          }}
+        >
+          <div style={card}>
+            <h3 style={cardTitle}>Experiencia técnica</h3>
+            <p style={cardText}>
+              Amplio conocimiento en infraestructura industrial y sistemas eléctricos.
+            </p>
+          </div>
+
+          <div style={card}>
+            <h3 style={cardTitle}>Enfoque operativo</h3>
+            <p style={cardText}>
+              Soluciones diseñadas para continuidad y eficiencia en planta.
+            </p>
+          </div>
+
+          <div style={card}>
+            <h3 style={cardTitle}>Calidad y seguridad</h3>
+            <p style={cardText}>
+              Cumplimiento de estándares industriales en cada proyecto.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
+
+const card = {
+  background: "white",
+  padding: "25px",
+  borderRadius: "8px",
+  border: "1px solid #ddd",
+};
+
+const cardTitle = {
+  marginBottom: "10px",
+  color: "#111",
+};
+
+const cardText = {
+  color: "#444",
+  fontSize: "14px",
+  lineHeight: "1.5",
+};

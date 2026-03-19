@@ -1,84 +1,94 @@
-import Image from "next/image";
-
 export default function Services() {
+  return (
+    <section
+      id="servicios"
+      style={{
+        padding: "80px 20px",
+        background: "#ffffff",
+      }}
+    >
+      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+        
+        <h2 style={title}>Servicios industriales</h2>
+        <div style={line} />
 
-return(
+        <div style={grid}>
 
-<section id="servicios" style={{
-padding:"80px 20px",
-textAlign:"center"
-}}>
+          {/* 🔷 INFRAESTRUCTURA ELÉCTRICA */}
+          <div style={card}>
+            <h3 style={cardTitle}>Infraestructura eléctrica</h3>
+            <p style={cardText}>
+              Instalaciones eléctricas industriales, canalización, tableros y sistemas eléctricos para plantas de manufactura.
+            </p>
+          </div>
 
-<h2 style={{
-fontSize:"36px",
-marginBottom:"40px"
-}}>
-Servicios industriales
-</h2>
+          {/* 🔷 INFRAESTRUCTURA MECÁNICA */}
+          <div style={card}>
+            <img
+              src="/images/servicio-mecanico.jpg"
+              alt="Infraestructura mecánica"
+              style={{
+                width: "100%",
+                marginBottom: "15px",
+                borderRadius: "6px",
+                objectFit: "cover",
+              }}
+            />
 
-<div style={{
-display:"grid",
-gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",
-gap:"40px",
-maxWidth:"1200px",
-margin:"auto"
-}}>
+            <h3 style={cardTitle}>Infraestructura mecánica</h3>
 
-<div>
-<Image
-src="/images/infraestructura-electrica.jpg"
-alt="Infraestructura eléctrica"
-width={400}
-height={260}
-/>
+            <p style={cardText}>
+              Estructuras metálicas, pailería, soldadura y tuberías industriales para instalaciones productivas.
+            </p>
+          </div>
 
-<h3>Infraestructura eléctrica</h3>
+          {/* 🔷 TRANSPORTADORES */}
+          <div style={card}>
+            <h3 style={cardTitle}>Sistemas de transporte industrial</h3>
+            <p style={cardText}>
+              Integración e instalación de transportadores para líneas de producción.
+            </p>
+          </div>
 
-<p>
-Instalaciones eléctricas industriales,
-canalización, tableros y sistemas eléctricos
-para plantas de manufactura.
-</p>
-</div>
+        </div>
 
-<div>
-<Image
-src="/images/infraestructura-mecanica.jpg"
-alt="Infraestructura mecánica"
-width={400}
-height={260}
-/>
-
-<h3>Infraestructura mecánica</h3>
-
-<p>
-Estructuras metálicas, pailería,
-soldadura y tuberías industriales
-para instalaciones productivas.
-</p>
-</div>
-
-<div>
-<Image
-src="/images/transportadores-industriales.jpg"
-alt="Transportadores industriales"
-width={400}
-height={260}
-/>
-
-<h3>Sistemas de transporte industrial</h3>
-
-<p>
-Integración e instalación de sistemas
-de transporte industrial para líneas
-de producción.
-</p>
-</div>
-
-</div>
-
-</section>
-
-)
-
+      </div>
+    </section>
+  );
 }
+
+const title = {
+  fontSize: "clamp(26px, 5vw, 36px)",
+  marginBottom: "15px",
+};
+
+const line = {
+  width: "60px",
+  height: "4px",
+  background: "#ff6a00",
+  marginBottom: "40px",
+};
+
+const grid = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+  gap: "25px",
+};
+
+const card = {
+  background: "#f9f9f9",
+  padding: "20px",
+  borderRadius: "8px",
+  border: "1px solid #ddd",
+};
+
+const cardTitle = {
+  marginBottom: "10px",
+  fontSize: "18px",
+};
+
+const cardText = {
+  fontSize: "14px",
+  color: "#444",
+  lineHeight: "1.5",
+};

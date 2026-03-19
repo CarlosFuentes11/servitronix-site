@@ -3,83 +3,73 @@ export default function Projects() {
     <section
       id="proyectos"
       style={{
-        padding: "100px 40px",
-        background: "#111",
-        color: "white",
+        padding: "80px 20px",
+        background: "#f5f5f5",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        {/* TÍTULO */}
-        <h2 style={{ fontSize: "36px", marginBottom: "20px" }}>
-          Proyectos industriales
-        </h2>
+      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+        
+        <h2 style={title}>Proyectos industriales</h2>
+        <div style={line} />
 
-        {/* LÍNEA */}
-        <div
-          style={{
-            width: "60px",
-            height: "4px",
-            background: "#ff6a00",
-            marginBottom: "40px",
-          }}
-        />
-
-        {/* GRID */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "30px",
-          }}
-        >
-          {/* CARD 1 */}
-          <div style={cardStyle}>
-            <h3 style={titleStyle}>Instalación eléctrica industrial</h3>
-            <p style={textStyle}>
-              Desarrollo e instalación de sistemas eléctricos en planta de
-              manufactura, garantizando eficiencia y seguridad operativa.
+        <div style={grid}>
+          <div style={card}>
+            <h3 style={cardTitle}>Proyecto en planta de manufactura</h3>
+            <p style={cardText}>
+              Instalación eléctrica completa para línea de producción.
             </p>
           </div>
 
-          {/* CARD 2 */}
-          <div style={cardStyle}>
-            <h3 style={titleStyle}>Sistemas de iluminación industrial</h3>
-            <p style={textStyle}>
-              Implementación de soluciones de iluminación para áreas de
-              producción y almacenes, optimizando consumo energético.
+          <div style={card}>
+            <h3 style={cardTitle}>Optimización de iluminación industrial</h3>
+            <p style={cardText}>
+              Optimización de iluminación en nave industrial.
             </p>
           </div>
 
-          {/* CARD 3 */}
-          <div style={cardStyle}>
-            <h3 style={titleStyle}>Mantenimiento electromecánico</h3>
-            <p style={textStyle}>
-              Servicios preventivos y correctivos para asegurar la continuidad
-              operativa de instalaciones industriales.
+          <div style={card}>
+            <h3 style={cardTitle}>Mantenimiento electromecánico en planta</h3>
+            <p style={cardText}>
+              Servicios electromecánicos para continuidad operativa.
             </p>
           </div>
         </div>
+
       </div>
     </section>
   );
 }
 
-/* 🎨 ESTILOS */
-const cardStyle = {
-  background: "#1f1f1f",
-  padding: "30px",
-  borderRadius: "10px",
-  border: "1px solid #333",
-  transition: "0.3s",
+const title = {
+  fontSize: "clamp(26px, 5vw, 36px)",
+  marginBottom: "15px",
 };
 
-const titleStyle = {
-  fontSize: "20px",
+const line = {
+  width: "60px",
+  height: "4px",
+  background: "#ff6a00",
+  marginBottom: "40px",
+};
+
+const grid = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+  gap: "20px",
+};
+
+const card = {
+  background: "white",
+  padding: "25px",
+  borderRadius: "8px",
+  border: "1px solid #ddd",
+};
+
+const cardTitle = {
   marginBottom: "10px",
 };
 
-const textStyle = {
-  fontSize: "16px",
-  color: "#ccc",
-  lineHeight: "1.6",
+const cardText = {
+  fontSize: "14px",
+  color: "#444",
 };
