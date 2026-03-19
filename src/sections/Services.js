@@ -35,7 +35,7 @@ export default function Services() {
               }}
             />
 
-            <h3 style={cardTitle}>Infraestructura mecánica</h3>
+            <h3 style={cardTitle}>TEST SERIVIO MECANICO</h3>
 
             <p style={cardText}>
               Estructuras metálicas, pailería, soldadura y tuberías industriales para instalaciones productivas.
