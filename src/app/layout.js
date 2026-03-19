@@ -62,15 +62,17 @@ export default function RootLayout({ children }) {
         {children}
 
         {/* 🔷 FOOTER */}
-        <footer
-          style={{
+    <footer
+        style={{
             background: "#111",
-            color: "white",
-            padding: "40px 20px",
+            color: "#ffffff", // 🔥 FORZADO
+            padding: "40px",
             textAlign: "center",
-          }}
-        >
-          <p>© Servitronix — Infraestructura electromecánica industrial</p>
+  }}
+>
+          <p style={{ color: "#ffffff" }}>
+    © Servitronix — Infraestructura electromecánica industrial
+          </p>
         </footer>
 
       </body>

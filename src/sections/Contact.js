@@ -137,6 +137,7 @@ const legal = {
   paddingTop: "20px",
   borderTop: "1px solid rgba(255,255,255,0.2)",
   fontSize: "13px",
-  opacity: "0.8",
   lineHeight: "1.6",
+  color: "#ffffff", // 🔥 CLAVE
+  opacity: "0.9",
 };
