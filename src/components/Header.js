@@ -18,37 +18,37 @@ export default function Header() {
         <span style={logoText}>SERVITRONIX</span>
       </div>
 
-      {/* DESKTOP NAV */}
-      <nav style={navDesktop} className="nav-desktop">
-        <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#capacidades">Capacidades</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#industrias">Industrias</a>
-        <a href="#contacto">Contacto</a>
+      {/* NAV DESKTOP */}
+      <nav style={navDesktop}>
+        <a href="#inicio" style={link}>Inicio</a>
+        <a href="#servicios" style={link}>Servicios</a>
+        <a href="#capacidades" style={link}>Capacidades</a>
+        <a href="#proyectos" style={link}>Proyectos</a>
+        <a href="#industrias" style={link}>Industrias</a>
+        <a href="#contacto" style={link}>Contacto</a>
       </nav>
 
-      {/* MOBILE BUTTON */}
+      {/* BOTÓN MOBILE */}
       <div style={menuButton} onClick={() => setOpen(!open)}>
         ☰
       </div>
 
-      {/* MOBILE MENU */}
+      {/* MENÚ MOBILE */}
       {open && (
         <div style={mobileMenu}>
-          <a href="#inicio" onClick={() => setOpen(false)}>Inicio</a>
-          <a href="#servicios" onClick={() => setOpen(false)}>Servicios</a>
-          <a href="#capacidades" onClick={() => setOpen(false)}>Capacidades</a>
-          <a href="#proyectos" onClick={() => setOpen(false)}>Proyectos</a>
-          <a href="#industrias" onClick={() => setOpen(false)}>Industrias</a>
-          <a href="#contacto" onClick={() => setOpen(false)}>Contacto</a>
+          <a href="#inicio" style={mobileLink} onClick={() => setOpen(false)}>Inicio</a>
+          <a href="#servicios" style={mobileLink} onClick={() => setOpen(false)}>Servicios</a>
+          <a href="#capacidades" style={mobileLink} onClick={() => setOpen(false)}>Capacidades</a>
+          <a href="#proyectos" style={mobileLink} onClick={() => setOpen(false)}>Proyectos</a>
+          <a href="#industrias" style={mobileLink} onClick={() => setOpen(false)}>Industrias</a>
+          <a href="#contacto" style={mobileLink} onClick={() => setOpen(false)}>Contacto</a>
         </div>
       )}
     </header>
   );
 }
 
-/* STYLES */
+/* ===== ESTILOS ===== */
 
 const header = {
   position: "sticky",
@@ -70,14 +70,25 @@ const logoContainer = {
 const logoText = {
   color: "white",
   fontWeight: "bold",
+  fontSize: "16px",
 };
 
 const navDesktop = {
-  display: "none",
-  gap: "20px",
+  display: "flex",
+  gap: "25px",
+  alignItems: "center",
+};
+
+const link = {
+  color: "#ffffff",
+  textDecoration: "none",
+  fontSize: "14px",
+  fontWeight: "500",
+  transition: "0.2s",
 };
 
 const menuButton = {
+  display: "none",
   color: "white",
   fontSize: "26px",
   cursor: "pointer",
@@ -93,4 +104,10 @@ const mobileMenu = {
   flexDirection: "column",
   gap: "15px",
   padding: "20px",
+};
+
+const mobileLink = {
+  color: "white",
+  textDecoration: "none",
+  fontSize: "16px",
 };
