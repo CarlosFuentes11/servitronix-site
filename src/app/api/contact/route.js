@@ -2,21 +2,30 @@ import nodemailer from "nodemailer";
 import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
+
+// 🔥 conexión global (evita reconectar cada vez)
+let client;
+let clientPromise;
+
+if (!global._mongoClientPromise) {
+  client = new MongoClient(uri);
+  global._mongoClientPromise = client.connect();
+}
+
+clientPromise = global._mongoClientPromise;
 
 export async function POST(req) {
   try {
     const { nombre, correo, mensaje } = await req.json();
 
-    // 🔒 Validación básica
     if (!nombre || !correo || !mensaje) {
       return new Response(JSON.stringify({ error: "Campos incompletos" }), {
         status: 400,
       });
     }
 
-    // ===== 1. GUARDAR EN BASE DE DATOS =====
-    await client.connect();
+    // ===== MONGODB =====
+    const client = await clientPromise;
     const db = client.db("servitronix");
 
     await db.collection("leads").insertOne({
@@ -26,7 +35,7 @@ export async function POST(req) {
       fecha: new Date(),
     });
 
-    // ===== 2. ENVÍO DE CORREO =====
+    // ===== EMAIL =====
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -35,7 +44,6 @@ export async function POST(req) {
       },
     });
 
-    // correo a ti
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
@@ -48,25 +56,24 @@ export async function POST(req) {
       `,
     });
 
-    // autoreply al cliente
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: correo,
       subject: "Hemos recibido tu solicitud",
       html: `
         <p>Hola ${nombre},</p>
-        <p>Recibimos tu mensaje. Nuestro equipo te contactará en menos de 24 horas.</p>
-        <br/>
-        <p><b>Servitronix</b></p>
+        <p>Recibimos tu mensaje. Te contactaremos en menos de 24 horas.</p>
       `,
     });
 
     return new Response(JSON.stringify({ ok: true }), { status: 200 });
 
   } catch (error) {
-    console.error(error);
-    return new Response(JSON.stringify({ error: "Error interno" }), {
-      status: 500,
-    });
+    console.error("ERROR API:", error);
+
+    return new Response(
+      JSON.stringify({ error: "Error interno del servidor" }),
+      { status: 500 }
+    );
   }
 }
