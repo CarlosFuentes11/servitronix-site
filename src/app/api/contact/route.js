@@ -3,6 +3,10 @@ import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
 
+if (!uri) {
+  throw new Error("MONGODB_URI no está definida");
+}
+
 // 🔥 conexión global (evita reconectar cada vez)
 let client;
 let clientPromise;
