@@ -5,6 +5,10 @@ import { useState } from "react";
 export default function Header() {
   const [open, setOpen] = useState(false);
 
+  const handleHover = (e, color) => {
+    e.target.style.color = color;
+  };
+
   return (
     <header style={header}>
       
@@ -20,12 +24,17 @@ export default function Header() {
 
       {/* NAV DESKTOP */}
       <nav style={navDesktop}>
-        <a href="#inicio" style={link}>Inicio</a>
-        <a href="#servicios" style={link}>Servicios</a>
-        <a href="#capacidades" style={link}>Capacidades</a>
-        <a href="#proyectos" style={link}>Proyectos</a>
-        <a href="#industrias" style={link}>Industrias</a>
-        <a href="#contacto" style={link}>Contacto</a>
+        {links.map((item, index) => (
+          <a
+            key={index}
+            href={item.href}
+            style={link}
+            onMouseEnter={(e) => handleHover(e, "#ff6a00")}
+            onMouseLeave={(e) => handleHover(e, "#ffffff")}
+          >
+            {item.label}
+          </a>
+        ))}
       </nav>
 
       {/* BOTÓN MOBILE */}
@@ -36,19 +45,38 @@ export default function Header() {
       {/* MENÚ MOBILE */}
       {open && (
         <div style={mobileMenu}>
-          <a href="#inicio" style={mobileLink} onClick={() => setOpen(false)}>Inicio</a>
-          <a href="#servicios" style={mobileLink} onClick={() => setOpen(false)}>Servicios</a>
-          <a href="#capacidades" style={mobileLink} onClick={() => setOpen(false)}>Capacidades</a>
-          <a href="#proyectos" style={mobileLink} onClick={() => setOpen(false)}>Proyectos</a>
-          <a href="#industrias" style={mobileLink} onClick={() => setOpen(false)}>Industrias</a>
-          <a href="#contacto" style={mobileLink} onClick={() => setOpen(false)}>Contacto</a>
+          {links.map((item, index) => (
+            <a
+              key={index}
+              href={item.href}
+              style={mobileLink}
+              onClick={() => setOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
         </div>
       )}
     </header>
   );
 }
 
-/* ===== ESTILOS ===== */
+/* 🔗 LINKS CENTRALIZADOS */
+
+const links = [
+  { label: "Inicio", href: "#inicio" },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Capacidades", href: "#capacidades" },
+  { label: "Proceso", href: "#proceso" },
+  { label: "Proyectos", href: "#proyectos" },
+  { label: "Clientes", href: "#clientes" },
+  { label: "Proveedores", href: "#proveedores" },
+  { label: "Certificaciones", href: "#certificaciones" },
+  { label: "Industrias", href: "#industrias" },
+  { label: "Contacto", href: "#contacto" },
+];
+
+/* ESTILOS */
 
 const header = {
   position: "sticky",
@@ -82,13 +110,13 @@ const navDesktop = {
 const link = {
   color: "#ffffff",
   textDecoration: "none",
-  fontSize: "14px",
+  fontSize: "13px",
   fontWeight: "500",
-  transition: "0.2s",
+  transition: "0.3s",
 };
 
 const menuButton = {
-  display: "none",
+  display: "block",
   color: "white",
   fontSize: "26px",
   cursor: "pointer",
@@ -111,3 +139,4 @@ const mobileLink = {
   textDecoration: "none",
   fontSize: "16px",
 };
+

@@ -46,51 +46,55 @@ export default function Hero() {
         }}
       >
         <div style={{ maxWidth: "900px" }}>
-
-          <h1 style={h1}>
-            SERVITRONIX
-          </h1>
+          <h1 style={h1}>SERVITRONIX</h1>
 
           <p style={subtitle}>
-            Soluciones Electromecánicas Industriales
+            Soluciones Electromecánicas Industriales Integrales
           </p>
 
           <p style={desc}>
-            Instalación, mantenimiento, servicios especializados e integración de infraestructura para
-            plantas industriales y PYMES
+            Más de 22 años desarrollando infraestructura, mantenimiento y sistemas industriales para garantizar continuidad operativa, seguridad y eficiencia en planta.
           </p>
 
           {/* BOTONES */}
-          <div style={buttons}>
-
+          <div
+            style={{
+              display: "flex",
+              gap: "15px",
+              marginTop: "25px",
+              justifyContent: "center", // 🔥 ESTO LOS CENTRA
+              flexWrap: "wrap", // 🔥 RESPONSIVE
+            }}
+          >
             <button
+              className="btn-primary"
               onClick={() =>
                 document
                   .getElementById("contacto")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              style={btnPrimary}
             >
               Solicitar cotización
             </button>
 
             <button
+              className="btn-secondary"
               onClick={() =>
                 document
                   .getElementById("servicios")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              style={btnSecondary}
             >
               Ver servicios
             </button>
-
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+/* ESTILOS */
 
 const h1 = {
   fontSize: "clamp(32px, 6vw, 56px)",
@@ -112,33 +116,4 @@ const desc = {
   opacity: "0.9",
   lineHeight: "1.5",
   color: "#ffffff",
-};
-
-const buttons = {
-  marginTop: "30px",
-  display: "flex",
-  flexDirection: "column",
-  gap: "10px",
-  alignItems: "center",
-};
-
-const btnPrimary = {
-  background: "#ff6a00",
-  color: "#fff",
-  padding: "14px 28px",
-  border: "none",
-  cursor: "pointer",
-  fontWeight: "bold",
-  width: "100%",
-  maxWidth: "280px",
-};
-
-const btnSecondary = {
-  background: "transparent",
-  color: "#fff",
-  padding: "14px 28px",
-  border: "1px solid #fff",
-  cursor: "pointer",
-  width: "100%",
-  maxWidth: "280px",
 };

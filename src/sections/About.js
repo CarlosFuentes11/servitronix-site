@@ -42,9 +42,7 @@ export default function About() {
             color: "#333",
           }}
         >
-          Servitronix es una empresa especializada en infraestructura
-          electromecánica industrial, enfocada en brindar soluciones
-          eficientes para plantas de manufactura, industria y PYMES.
+          Servitronix es una empresa con más de 22 años de experiencia en soluciones electromecánicas industriales, especializada en la integración de infraestructura eléctrica, mecánica y sistemas industriales para plantas de manufactura, industria y PYMES.
         </p>
 
         <p
@@ -55,9 +53,19 @@ export default function About() {
             color: "#333",
           }}
         >
-          Contamos con experiencia en instalación, mantenimiento y
-          desarrollo de sistemas eléctricos e industriales, garantizando
-          operación continua, seguridad y eficiencia en cada proyecto.
+          Nos distinguimos por ofrecer un enfoque integral, permitiendo a nuestros clientes centralizar sus proyectos con un solo proveedor, reduciendo tiempos, costos y riesgos operativos.
+        
+        </p>
+                <p
+          style={{
+            fontSize: "clamp(14px, 2.5vw, 18px)",
+            marginTop: "15px",
+            lineHeight: "1.7",
+            color: "#333",
+          }}
+        >
+          Trabajamos bajo estándares de seguridad, cumplimiento normativo y eficiencia operativa, asegurando resultados confiables en cada etapa del proyecto.
+        
         </p>
 
         {/* BLOQUES */}

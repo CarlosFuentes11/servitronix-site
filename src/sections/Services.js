@@ -1,3 +1,5 @@
+"use client";
+
 export default function Services() {
   return (
     <section
@@ -8,63 +10,62 @@ export default function Services() {
       }}
     >
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-        
         <h2 style={title}>Servicios industriales</h2>
         <div style={line} />
 
         <div style={grid}>
-
-          {/* 🔷 INFRAESTRUCTURA ELÉCTRICA */}
-          <div style={card}>
-            <img
-              src="/images/servicio-electrico.jpg"
-              alt="Infraestructura eléctrica"
-              style={img}
-            />
-
+          
+          <div style={card} className="card-hover">
+            <img src="/images/servicio-electrico.jpg" alt="" style={img} />
             <h3 style={cardTitle}>Infraestructura eléctrica</h3>
-
-            <p style={cardText}>
-              Instalaciones eléctricas industriales, canalización, tableros y sistemas eléctricos para plantas de manufactura.
-            </p>
+            <ul style={list}>
+              <li>Instalaciones en baja, media y alta tensión</li>
+              <li>Subestaciones eléctricas</li>
+              <li>Tableros y distribución</li>
+              <li>Ingeniería eléctrica</li>
+            </ul>
           </div>
 
-          {/* 🔷 INFRAESTRUCTURA MECÁNICA */}
-          <div style={card}>
-            <img
-              src="/images/servicio-mecanico.png"
-              alt="Infraestructura mecánica"
-              style={img}
-            />
-
+          <div style={card} className="card-hover">
+            <img src="/images/servicio-mecanico.png" alt="" style={img} />
             <h3 style={cardTitle}>Infraestructura mecánica</h3>
-
-            <p style={cardText}>
-              Estructuras metálicas, pailería, soldadura y tuberías industriales para instalaciones productivas.
-            </p>
+            <ul style={list}>
+              <li>Pailería y soldadura industrial</li>
+              <li>Estructuras metálicas</li>
+              <li>Sistemas hidráulicos y neumáticos</li>
+              <li>Fabricación en planta</li>
+            </ul>
           </div>
 
-          {/* 🔷 TRANSPORTADORES */}
-          <div style={card}>
-            <img
-              src="/images/servicio-transporte.jpg"
-              alt="Sistemas de transporte industrial"
-              style={img}
-            />
+          <div style={card} className="card-hover">
+            <img src="/images/servicio-transporte.jpg" alt="" style={img} />
+            <h3 style={cardTitle}>Automatización</h3>
+            <ul style={list}>
+              <li>Transportadores industriales</li>
+              <li>Líneas de producción</li>
+              <li>Sistemas automatizados</li>
+              <li>Optimización operativa</li>
+            </ul>
+          </div>
 
-            <h3 style={cardTitle}>Sistemas de transporte industrial</h3>
-
-            <p style={cardText}>
-              Integración e instalación de transportadores para líneas de producción.
-            </p>
+          <div style={card} className="card-hover">
+            <img src="/images/servicio-mantenimiento.jpg" alt="" style={img} />
+            <h3 style={cardTitle}>Mantenimiento industrial</h3>
+            <ul style={list}>
+              <li>Preventivo y correctivo</li>
+              <li>Diagnóstico de fallas</li>
+              <li>Reubicación de maquinaria</li>
+              <li>Soporte en planta</li>
+            </ul>
           </div>
 
         </div>
-
       </div>
     </section>
   );
 }
+
+/* ESTILOS */
 
 const title = {
   fontSize: "clamp(26px, 5vw, 36px)",
@@ -106,8 +107,10 @@ const cardTitle = {
   color: "#111",
 };
 
-const cardText = {
-  fontSize: "14px",
+const list = {
+  paddingLeft: "18px",
+  margin: 0,
   color: "#333",
-  lineHeight: "1.5",
+  fontSize: "14px",
+  lineHeight: "1.8",
 };

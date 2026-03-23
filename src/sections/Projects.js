@@ -8,48 +8,66 @@ export default function Projects() {
       }}
     >
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-        
         <h2 style={title}>Proyectos industriales</h2>
         <div style={line} />
 
         <div style={grid}>
-
+          
           {/* PROYECTO 1 */}
-          <div style={card}>
+          <div className="card-hover fade-up" style={card}>
             <img
               src="/images/proyecto-electrico.jpg"
               alt="Proyecto eléctrico"
+              className="project-img"
               style={img}
             />
-            <h3 style={cardTitle}>Proyecto en planta de manufactura</h3>
+            <h3 style={cardTitle}>
+              Instalaciones eléctricas completas para líneas de producción
+            </h3>
             <p style={cardText}>
-              Instalación eléctrica completa para línea de producción.
+              Implementación completa en planta de manufactura.
             </p>
           </div>
 
           {/* PROYECTO 2 */}
-          <div style={card}>
+          <div
+            className="card-hover fade-up"
+            style={{
+              ...card,
+              animationDelay: "0.1s",
+            }}
+          >
             <img
               src="/images/proyecto-iluminacion.jpg"
               alt="Iluminación industrial"
+              className="project-img"
               style={img}
             />
             <h3 style={cardTitle}>Optimización de iluminación industrial</h3>
             <p style={cardText}>
-              Implementación de soluciones de iluminación en nave industrial para eficiencia energética.
+              Reducción de consumo energético en nave industrial.
             </p>
           </div>
 
           {/* PROYECTO 3 */}
-          <div style={card}>
+          <div
+            className="card-hover fade-up"
+            style={{
+              ...card,
+              animationDelay: "0.2s",
+            }}
+          >
             <img
               src="/images/proyecto-mantenimiento.jpg"
               alt="Mantenimiento industrial"
+              className="project-img"
               style={img}
             />
-            <h3 style={cardTitle}>Mantenimiento electromecánico en planta</h3>
+            <h3 style={cardTitle}>
+              Mantenimiento electromecánico especializado
+            </h3>
             <p style={cardText}>
-              Servicios especializados para garantizar continuidad operativa en sistemas industriales.
+              Corrección y prevención de fallas en sistemas críticos.
             </p>
           </div>
 
@@ -59,9 +77,11 @@ export default function Projects() {
   );
 }
 
+/* ESTILOS */
+
 const title = {
-  fontSize: "clamp(26px, 5vw, 36px)",
-  marginBottom: "15px",
+  fontSize: "clamp(28px, 4vw, 40px)",
+  marginBottom: "10px",
   color: "#111",
 };
 
@@ -80,8 +100,8 @@ const grid = {
 
 const card = {
   background: "#ffffff",
-  borderRadius: "8px",
-  overflow: "hidden",
+  padding: "20px",
+  borderRadius: "10px",
   border: "1px solid #ddd",
 };
 
@@ -89,17 +109,18 @@ const img = {
   width: "100%",
   height: "180px",
   objectFit: "cover",
+  borderRadius: "6px",
+  marginBottom: "15px",
 };
 
 const cardTitle = {
-  padding: "15px 15px 5px",
-  fontSize: "18px",
+  fontSize: "16px",
+  fontWeight: "600",
+  marginBottom: "8px",
   color: "#111",
 };
 
 const cardText = {
-  padding: "0 15px 15px",
   fontSize: "14px",
-  color: "#444",
-  lineHeight: "1.5",
+  color: "#555",
 };

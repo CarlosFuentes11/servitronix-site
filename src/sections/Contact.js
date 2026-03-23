@@ -24,6 +24,11 @@ export default function Contact() {
           Atendemos proyectos en el norte de México y zonas industriales del país.
         </p>
 
+        {/* 🔥 MENSAJE DE RESPUESTA (CORRECTO) */}
+        <p style={response}>
+         ⚡ Respondemos en menos de 24 horas, garantizamos la atención al cliente. ⚡
+        </p>
+
         <div style={grid}>
 
           {/* INFO */}
@@ -34,37 +39,31 @@ export default function Contact() {
           </div>
 
           {/* FORM */}
-          <form style={form}>
-            <input placeholder="Nombre" style={input} />
-            <input placeholder="Correo" style={input} />
-            <textarea placeholder="Mensaje" rows="4" style={input} />
+          <form
+                action="https://formsubmit.co/servitronixcontacto@gmail.com"
+                method="POST"
+                style={form}
+          >
+            <input type="text" name="name" placeholder="Nombre" required style={input} />
+            <input type="email" name="email" placeholder="Correo" required style={input} />
+            <textarea name="message" placeholder="Mensaje" rows="4" required style={input} />
+
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://tu-dominio.vercel.app" />
 
             <button style={button}>
-              Enviar
+                    Enviar
             </button>
           </form>
 
         </div>
 
-        {/* REGISTROS */}
-<div style={legal}>
-  <p style={{ color: "#ffffff" }}>
-    Registro REPSE: STPS/UTD/DGIFT/AR203350/2025
-  </p>
-
-  <p style={{ color: "#ffffff" }}>
-    DUNS: 95-176-8610
-  </p>
-
-  <p style={{ color: "#ffffff" }}>
-    Cumplimos con regulaciones y estándares para la prestación de servicios especializados en el sector industrial.
-  </p>
-</div>
-
       </div>
     </section>
   );
 }
+
+/* ESTILOS */
 
 const title = {
   fontSize: "clamp(26px, 5vw, 36px)",
@@ -93,8 +92,18 @@ const subtext = {
   color: "#ccc",
 };
 
+/* 🔥 NUEVO ESTILO */
+const response = {
+  marginTop: "25px",
+  marginBottom: "10px",
+  textAlign: "right",
+  fontSize: "14px",
+  color: "#ff6a00",
+  fontWeight: "500",
+};
+
 const grid = {
-  marginTop: "30px",
+  marginTop: "20px",
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
   gap: "30px",
@@ -117,6 +126,7 @@ const form = {
   background: "rgba(255,255,255,0.05)",
   padding: "20px",
   borderRadius: "8px",
+  border: "1px solid rgba(255,255,255,0.1)", // 🔥 mejora visual
 };
 
 const input = {
