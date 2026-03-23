@@ -7,7 +7,7 @@ if (!uri) {
   throw new Error("MONGODB_URI no está definida");
 }
 
-// 🔥 conexión global (evita reconectar cada vez)
+// 🔥 conexión global
 let client;
 let clientPromise;
 
@@ -18,15 +18,40 @@ if (!global._mongoClientPromise) {
 
 clientPromise = global._mongoClientPromise;
 
+// 🔒 rate limit simple (global)
+let lastRequestTime = 0;
+
 export async function POST(req) {
   try {
-    const { nombre, correo, mensaje } = await req.json();
+    const body = await req.json();
+    const { nombre, correo, mensaje, empresa } = body;
+
+    // 🛑 HONEYPOT (si viene lleno = bot)
+    if (empresa) {
+      return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    }
+
+    // ⏱ RATE LIMIT (5 seg)
+    const now = Date.now();
+    if (now - lastRequestTime < 5000) {
+      return new Response(
+        JSON.stringify({ error: "Demasiadas solicitudes" }),
+        { status: 429 }
+      );
+    }
+    lastRequestTime = now;
 
     if (!nombre || !correo || !mensaje) {
       return new Response(JSON.stringify({ error: "Campos incompletos" }), {
         status: 400,
       });
     }
+
+    // 🌐 obtener IP
+    const ip =
+      req.headers.get("x-forwarded-for") ||
+      req.headers.get("x-real-ip") ||
+      "unknown";
 
     // ===== MONGODB =====
     const client = await clientPromise;
@@ -37,6 +62,9 @@ export async function POST(req) {
       correo,
       mensaje,
       fecha: new Date(),
+      source: "web",
+      status: "nuevo",
+      ip,
     });
 
     // ===== EMAIL =====
@@ -57,6 +85,7 @@ export async function POST(req) {
         <p><b>Nombre:</b> ${nombre}</p>
         <p><b>Correo:</b> ${correo}</p>
         <p><b>Mensaje:</b> ${mensaje}</p>
+        <p><b>IP:</b> ${ip}</p>
       `,
     });
 
