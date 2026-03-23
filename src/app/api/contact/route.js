@@ -1,40 +1,32 @@
 import nodemailer from "nodemailer";
+import { MongoClient } from "mongodb";
 
-// 🧠 memoria simple para rate limit (anti spam básico)
-const requests = new Map();
+const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri);
 
 export async function POST(req) {
   try {
-    const { nombre, correo, mensaje, empresa } = await req.json();
+    const { nombre, correo, mensaje } = await req.json();
 
-    // 🛑 1. HONEYPOT (anti bots silencioso)
-    if (empresa) {
-      return Response.json({ ok: true });
-    }
-
-    // 🛑 2. VALIDACIÓN
+    // 🔒 Validación básica
     if (!nombre || !correo || !mensaje) {
-      return Response.json({ ok: false, error: "Campos incompletos" });
+      return new Response(JSON.stringify({ error: "Campos incompletos" }), {
+        status: 400,
+      });
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(correo)) {
-      return Response.json({ ok: false, error: "Correo inválido" });
-    }
+    // ===== 1. GUARDAR EN BASE DE DATOS =====
+    await client.connect();
+    const db = client.db("servitronix");
 
-    // 🛑 3. RATE LIMIT (1 envío cada 30s por IP)
-    const ip = req.headers.get("x-forwarded-for") || "unknown";
+    await db.collection("leads").insertOne({
+      nombre,
+      correo,
+      mensaje,
+      fecha: new Date(),
+    });
 
-    const now = Date.now();
-    const lastRequest = requests.get(ip);
-
-    if (lastRequest && now - lastRequest < 30000) {
-      return Response.json({ ok: false, error: "Espera antes de reenviar" });
-    }
-
-    requests.set(ip, now);
-
-    // 📧 CONFIG SMTP
+    // ===== 2. ENVÍO DE CORREO =====
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -43,40 +35,38 @@ export async function POST(req) {
       },
     });
 
-    // 📩 1. CORREO A TU EMPRESA
+    // correo a ti
     await transporter.sendMail({
-      from: `"Web Servitronix" <${process.env.EMAIL_USER}>`,
+      from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
-      subject: "Nuevo mensaje desde la web",
+      subject: "Nuevo lead - Servitronix",
       html: `
-        <h2>Nuevo contacto</h2>
-        <p><strong>Nombre:</strong> ${nombre}</p>
-        <p><strong>Correo:</strong> ${correo}</p>
-        <p><strong>Mensaje:</strong></p>
-        <p>${mensaje}</p>
+        <h3>Nuevo contacto</h3>
+        <p><b>Nombre:</b> ${nombre}</p>
+        <p><b>Correo:</b> ${correo}</p>
+        <p><b>Mensaje:</b> ${mensaje}</p>
       `,
     });
 
-    // 📩 2. AUTO-REPLY AL CLIENTE
+    // autoreply al cliente
     await transporter.sendMail({
-      from: `"Servitronix" <${process.env.EMAIL_USER}>`,
+      from: process.env.EMAIL_USER,
       to: correo,
-      subject: "Hemos recibido tu mensaje",
+      subject: "Hemos recibido tu solicitud",
       html: `
-        <h2>Gracias por contactarnos</h2>
         <p>Hola ${nombre},</p>
-        <p>Hemos recibido tu mensaje y nuestro equipo te responderá en menos de 24 horas.</p>
-        <p><strong>Resumen de tu mensaje:</strong></p>
-        <p>${mensaje}</p>
+        <p>Recibimos tu mensaje. Nuestro equipo te contactará en menos de 24 horas.</p>
         <br/>
-        <p>Equipo Servitronix</p>
+        <p><b>Servitronix</b></p>
       `,
     });
 
-    return Response.json({ ok: true });
+    return new Response(JSON.stringify({ ok: true }), { status: 200 });
 
   } catch (error) {
     console.error(error);
-    return Response.json({ ok: false, error: "Error interno" });
+    return new Response(JSON.stringify({ error: "Error interno" }), {
+      status: 500,
+    });
   }
 }
