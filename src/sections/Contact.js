@@ -24,11 +24,6 @@ export default function Contact() {
           Atendemos proyectos en el norte de México y zonas industriales del país.
         </p>
 
-        {/* 🔥 MENSAJE DE RESPUESTA (CORRECTO) */}
-        <p style={response}>
-         ⚡ Respondemos en menos de 24 horas, garantizamos la atención al cliente. ⚡
-        </p>
-
         <div style={grid}>
 
           {/* INFO */}
@@ -38,23 +33,25 @@ export default function Contact() {
             <p style={white}>📍 Saltillo, Coahuila, México</p>
           </div>
 
-          {/* FORM */}
-          <form
-                action="https://formsubmit.co/servitronixcontacto@gmail.com"
-                method="POST"
-                style={form}
-          >
-            <input type="text" name="name" placeholder="Nombre" required style={input} />
-            <input type="email" name="email" placeholder="Correo" required style={input} />
-            <textarea name="message" placeholder="Mensaje" rows="4" required style={input} />
+          {/* FORM + MENSAJE */}
+          <div style={formContainer}>
 
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://tu-dominio.vercel.app" />
+            {/* 🔥 TEXTO CORRECTAMENTE POSICIONADO */}
+            <p style={responseText}>
+              ⚡ Respondemos en menos de 24 horas, garantizamos la atención al cliente.
+            </p>
 
-            <button style={button}>
-                    Enviar
-            </button>
-          </form>
+            <form style={form}>
+              <input placeholder="Nombre" style={input} />
+              <input placeholder="Correo" style={input} />
+              <textarea placeholder="Mensaje" rows="4" style={input} />
+
+              <button style={button}>
+                Enviar
+              </button>
+            </form>
+
+          </div>
 
         </div>
 
@@ -92,18 +89,8 @@ const subtext = {
   color: "#ccc",
 };
 
-/* 🔥 NUEVO ESTILO */
-const response = {
-  marginTop: "25px",
-  marginBottom: "10px",
-  textAlign: "right",
-  fontSize: "14px",
-  color: "#ff6a00",
-  fontWeight: "500",
-};
-
 const grid = {
-  marginTop: "20px",
+  marginTop: "30px",
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
   gap: "30px",
@@ -119,6 +106,18 @@ const white = {
   color: "#fff",
 };
 
+const formContainer = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "10px",
+};
+
+const responseText = {
+  fontSize: "13px",
+  color: "#ff6a00",
+  marginBottom: "5px",
+};
+
 const form = {
   display: "flex",
   flexDirection: "column",
@@ -126,7 +125,6 @@ const form = {
   background: "rgba(255,255,255,0.05)",
   padding: "20px",
   borderRadius: "8px",
-  border: "1px solid rgba(255,255,255,0.1)", // 🔥 mejora visual
 };
 
 const input = {
@@ -145,13 +143,4 @@ const button = {
   border: "none",
   cursor: "pointer",
   fontWeight: "bold",
-};
-
-const legal = {
-  marginTop: "40px",
-  paddingTop: "20px",
-  borderTop: "1px solid rgba(255,255,255,0.2)",
-  fontSize: "13px",
-  lineHeight: "1.6",
-  color: "#ffffff",
 };
